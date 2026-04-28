@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="Style.css">
+ 
+<title>Paleta de Colores</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+  <header>
+    <h1>Color <em>&</em> Paleta</h1>
+    <p>Generador de armonías cromáticas</p>
+  </header>
+
+  <div class="input-section">
+    <div class="input-row">
+      <div class="color-input-wrap">
+        <input type="color" class="color-swatch-input" id="colorPicker" value="#f9e615">
+        <input type="text" class="hex-input" id="hexInput" value="#F9E615" maxlength="7" placeholder="#RRGGBB">
+      </div>
+      <select class="harmony-select" id="harmonySelect">
+        <option value="complementary">Complementaria</option>
+        <option value="analogous">Análoga</option>
+        <option value="triadic">Triádica</option>
+        <option value="split-complementary">Split-Complementaria</option>
+        <option value="tetradic">Tetrádica</option>
+        <option value="monochromatic">Monocromática</option>
+      </select>
+      <button class="btn-generate" onclick="generatePalette()">Generar</button>
+    </div>
+  </div>
+
+  <div class="palette-section">
+    <div class="section-label">Paleta generada — clic para copiar, editar el color</div>
+    <div class="palette-grid" id="paletteGrid"></div>
+  </div>
+
+  <div class="actions-row">
+    <button class="btn-action" onclick="exportCSS()">↓ Exportar CSS</button>
+    <button class="btn-action" onclick="exportTailwind()">↓ Exportar Tailwind</button>
+    <button class="btn-action" onclick="exportJSON()">↓ Exportar JSON</button>
+    <button class="btn-action" onclick="randomColor()">⟳ Color aleatorio</button>
+  </div>
+
+  <div class="preview-section">
+    <div class="section-label">Vista previa</div>
+    <div class="preview-tabs">
+      <button class="tab-btn active" onclick="switchTab('card', this)">Tarjeta</button>
+      <button class="tab-btn" onclick="switchTab('ui', this)">UI</button>
+      <button class="tab-btn" onclick="switchTab('type', this)">Tipografía</button>
+    </div>
+    <div class="preview-frame" id="previewFrame"></div>
+  </div>
+</div>
+
+<div class="copy-toast" id="toast"></div>
+
+<div class="modal-overlay" id="exportModal">
+  <div class="modal">
+    <h3 id="modalTitle">Exportar</h3>
+    <pre class="export-code" id="exportCode"></pre>
+    <div class="modal-actions">
+      <button class="btn-copy-code" onclick="copyExportCode()">Copiar código</button>
+      <button class="btn-close-modal" onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
